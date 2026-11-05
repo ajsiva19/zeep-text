@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-navy-950: #0a1628;
+  --color-navy-900: #0f2137;
+  --color-navy-800: #152d4a;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c5a022;
+  --color-gold-600: #b89146;
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-line: var(--line);
+  --color-header: var(--header);
+  --color-nav: var(--nav);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-band: var(--band);
+  --color-band-text: var(--band-text);
+  --color-band-muted: var(--band-muted);
+  --color-footer: var(--footer);
+  --font-sans: "Montserrat", system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --page: #f3f6fb;
+  --surface: #ffffff;
+  --muted: #e8eef6;
+  --heading: #0a1628;
+  --body: #4b5563;
+  --line: #d5deea;
+  --header: #ffffff;
+  --nav: #1f2937;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --band: #0a1628;
+  --band-text: #ffffff;
+  --band-muted: rgba(255, 255, 255, 0.72);
+  --footer: #0a1628;
+}
+
+.dark {
+  color-scheme: dark;
+  --page: #07111f;
+  --surface: #0f2137;
+  --muted: #0c1a2e;
+  --heading: #f8fafc;
+  --body: #94a3b8;
+  --line: #1e3a5f;
+  --header: #0a1628;
+  --nav: #e2e8f0;
+  --accent: #22d3ee;
+  --accent-fg: #07111f;
+  --band: #0c1d33;
+  --band-text: #ffffff;
+  --band-muted: rgba(255, 255, 255, 0.7);
+  --footer: #06101c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-page text-body antialiased transition-colors duration-300;
+    margin: 0;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .field {
+    @apply w-full px-4 py-3 rounded-lg border border-line bg-surface text-heading outline-none transition focus:ring-2 focus:ring-accent focus:border-transparent;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-heading mb-1;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #c5a022 100%);
+  }
+
+  .bg-gradient-gold-hover:hover {
+    background: linear-gradient(135deg, #e0c04a 0%, #d4af37 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
